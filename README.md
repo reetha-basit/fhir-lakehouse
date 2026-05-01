@@ -1,4 +1,4 @@
-# FHIR Lakehouse — Healthcare Data Pipeline
+# FHIR Lakehouse - Healthcare Data Pipeline
 
 A production-style **Medallion Lakehouse** for healthcare data, built on **PySpark + Delta Lake** with **FHIR R4** clinical resources as the source format. Demonstrates Bronze/Silver/Gold layering, schema evolution, data quality validation with Great Expectations, and analytics-ready aggregations for population health use cases.
 
@@ -31,17 +31,17 @@ flowchart LR
 
 ### Why Medallion?
 
-The Medallion pattern gives us a clear separation between *raw provenance* (Bronze, never lost), *cleaned facts* (Silver, the source of truth for analytics), and *business marts* (Gold, opinionated views built for specific consumers). It makes pipelines reproducible — if the Gold logic changes, we can reprocess from Silver without re-ingesting source systems.
+The Medallion pattern gives us a clear separation between *raw provenance* (Bronze, never lost), *cleaned facts* (Silver, the source of truth for analytics), and *business marts* (Gold, opinionated views built for specific consumers). It makes pipelines reproducible - if the Gold logic changes, we can reprocess from Silver without re-ingesting source systems.
 
 ---
 
 ## Tech Stack
 
-- **Python 3.11** — pipeline language
-- **Apache Spark 3.5** — distributed processing engine
-- **Delta Lake 3.2** — ACID storage layer with schema evolution and time travel
-- **Great Expectations** — data quality and validation framework
-- **FHIR R4** — HL7 healthcare interoperability standard
+- **Python 3.11** - pipeline language
+- **Apache Spark 3.5** - distributed processing engine
+- **Delta Lake 3.2** - ACID storage layer with schema evolution and time travel
+- **Great Expectations** - data quality and validation framework
+- **FHIR R4** - HL7 healthcare interoperability standard
 
 ---
 
@@ -55,11 +55,11 @@ fhir-lakehouse/
 │   ├── raw/                       # Source FHIR NDJSON files
 │   ├── bronze/                    # Raw Delta tables (Bronze layer)
 │   ├── silver/                    # Cleaned Delta tables (Silver layer)
-│   └── gold/                      # Analytical marts (Gold layer) — TODO
+│   └── gold/                      # Analytical marts (Gold layer) - TODO
 ├── pipelines/
 │   ├── bronze_ingestion.py        # FHIR JSON → Bronze Delta
 │   ├── silver_transform.py        # Bronze → Silver (flatten/clean)
-│   └── gold_aggregations.py       # Silver → Gold (TODO — interview task)
+│   └── gold_aggregations.py       # Silver → Gold (TODO - interview task)
 ├── quality/
 │   └── expectations.py            # Great Expectations validation suite
 ├── utils/
@@ -80,8 +80,8 @@ fhir-lakehouse/
 
 ### Prerequisites
 
-- **Python 3.11+** — `python3 --version`
-- **Java 11 or 17** — required by PySpark (`java -version`)
+- **Python 3.11+** - `python3 --version`
+- **Java 11 or 17** - required by PySpark (`java -version`)
   - Mac: `brew install openjdk@17`
 - **Git**
 
@@ -166,15 +166,15 @@ FHIR resources are deeply nested. Flattening once in Silver lets every downstrea
 FHIR Bulk Data Export ($export operation) emits NDJSON natively. Matches how this would integrate with a real EHR.
 
 **Trade-offs accepted for this project:**
-- Single-machine Spark (no cluster) — fine for the data volumes here, would move to Databricks/EMR for production
-- Local file paths instead of cloud storage — easily swapped via config
-- Synthetic data — production would use real bulk export with PHI controls
+- Single-machine Spark (no cluster) - fine for the data volumes here, would move to Databricks/EMR for production
+- Local file paths instead of cloud storage - easily swapped via config
+- Synthetic data - production would use real bulk export with PHI controls
 
 ---
 
 ## Compliance Notes
 
-The sample data in this repo is **fully synthetic** — no real PHI. In a production deployment, the following controls would apply:
+The sample data in this repo is **fully synthetic** - no real PHI. In a production deployment, the following controls would apply:
 
 - Field-level encryption for direct identifiers (name, MRN, SSN)
 - Row/column-level access control (e.g. AWS Lake Formation, Unity Catalog)
@@ -186,4 +186,4 @@ The sample data in this repo is **fully synthetic** — no real PHI. In a produc
 
 ## License
 
-MIT — personal learning project.
+MIT - personal learning project.
