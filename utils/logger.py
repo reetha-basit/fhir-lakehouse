@@ -26,6 +26,9 @@ def get_logger(name: str) -> logging.Logger:
     if logger.handlers:
         return logger
 
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
     handler = logging.StreamHandler(sys.stdout)
     formatter = logging.Formatter(
         fmt="%(asctime)s | %(levelname)-7s | %(name)s | %(message)s",

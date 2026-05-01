@@ -26,6 +26,8 @@ spark-warehouse/
 metastore_db/
 derby.log
 *.log
+.spark-ivy/
+.spark-tmp/
 
 # Great Expectations generated
 gx/uncommitted/

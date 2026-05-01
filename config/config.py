@@ -56,6 +56,9 @@ GOLD_PATIENT_DEMOGRAPHICS = GOLD_DIR / "patient_demographics"
 APP_NAME = "FHIRLakehouse"
 SHUFFLE_PARTITIONS = 4  # Small for local dev; tune for production
 LOG_LEVEL = "WARN"  # Suppress Spark INFO noise
+SPARK_IVY_DIR = PROJECT_ROOT / ".spark-ivy"
+SPARK_LOCAL_DIR = PROJECT_ROOT / ".spark-tmp"
+SPARK_EXTRA_PACKAGES = ["com.sparkutils:hadoop-bare-naked-local-fs:0.2.0"]
 
 # -------------------------------------------------------------------
 # FHIR resource type constants
